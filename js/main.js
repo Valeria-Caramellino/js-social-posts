@@ -100,13 +100,30 @@ for (let i = 0; i < posts.length; i++) {
   container.innerHTML += contenutoHTML;
 }
 
-//definisco i  bottoni e il munero di like
-const elementLikeButton = document.querySelectorAll(".like-button");
-const elementLikeCounter = document.querySelectorAll(".js-likes-counter")
+//definisco i  bottoni 
+let elementLike = document.querySelectorAll(".like-button");
+//definisco elemento da modificare
+//devo aggiungere uno a questo elemento ogni volta che schiaccio
+let elementCounter =document.querySelectorAll(".js-likes-counter");
 
-console.log(elementLikeButton);
-console.log(elementLikeCounter);
+/////////////////////////////////////////////// FUNZIONA A META'////////////////
 
+for (let i = 0; i < elementLike.length; i++) {
 
-//Array vuoto dove vengono messi i post a cui è stato dato il like
-ArraylikePosts = [];
+    const element = elementLike[i];
+
+    element.addEventListener("click", function() {
+
+      this.classList.toggle("color");
+
+      for (let i = 0; i < elementCounter.length; i++) {
+        const eleContent = elementCounter[i];
+        var elementis = `${posts[i].likes + 1}`;
+        eleContent.innerHTML= `<b id="like-counter-1" class="js-likes-counter">${posts[i].likes + 1}</b>`;
+        //elementis.innerHTML=`${posts[i].likes + 1}`;
+       console.log(eleContent);
+        console.log(elementis);
+      }
+
+    })
+}
