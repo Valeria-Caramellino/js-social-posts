@@ -118,11 +118,9 @@ for (let i = 0; i < elementLike.length; i++) {
 
       for (let i = 0; i < elementCounter.length; i++) {
         const eleContent = elementCounter[i];
-        var elementis = `${posts[i].likes + 1}`;
         eleContent.innerHTML= `<b id="like-counter-1" class="js-likes-counter">${posts[i].likes + 1}</b>`;
-        //elementis.innerHTML=`${posts[i].likes + 1}`;
+      
        console.log(eleContent);
-        console.log(elementis);
       }
 
     })
