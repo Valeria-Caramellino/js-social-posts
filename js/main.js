@@ -64,43 +64,13 @@ const posts = [
 let container = document.getElementById("container");
 
 for (let i = 0; i < posts.length; i++) {
-  if (posts[i].author['image'] === null) {
-    let contenutoHTML = `<div id="${posts[i].id}" class="post"> `;
-    contenutoHTML += `<div class="post__header">`;
-    contenutoHTML += ` <div class="post-meta"> `;
-    contenutoHTML += `<div class="post-meta__icon">`;
-    contenutoHTML += `</div>`;
-    contenutoHTML += `<div class="post-meta__data">
-      <div class="post-meta__author">${posts[i].author.name}</div>
-      <div class="post-meta__time">${posts[i].created}</div>
-      </div>`;
-    contenutoHTML+= `</div></div>`;
-    contenutoHTML+=`<div class="post__text">${posts[i].content}</div>`;
-    contenutoHTML+=`<div class="post__image">
-      <img src="${posts[i].media}" alt="">
-      </div>`;
-    contenutoHTML+=`<div class="post__footer">
-      <div class="likes js-likes">
-        <div class="likes__cta">
-            <a class="like-button  js-like-button" href="#" data-postid="1">
-                <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
-                <span class="like-button__label">Mi Piace</span>
-            </a>
-        </div>
-        <div class="likes__counter">
-            Piace a <b id="like-counter-1" class="js-likes-counter">${posts[i].likes}</b> persone
-        </div>
-      </div> 
-      </div>`;
-    contenutoHTML+=`</div>`;
-  
-    container.innerHTML += contenutoHTML;
-
-  }else{
   let contenutoHTML = `<div id="${posts[i].id}" class="post"> `;
   contenutoHTML += `<div class="post__header">`;
   contenutoHTML += ` <div class="post-meta"> `;
   contenutoHTML += `<div class="post-meta__icon">`;
+  if (posts[i].author.image == null) {
+    posts[i].author.image ="https://www.shutterstock.com/image-vector/lf-fl-logo-design-vector-260nw-1715186701.jpg";
+  }
   contenutoHTML += `<img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">`;
   contenutoHTML += `</div>`;
   contenutoHTML += `<div class="post-meta__data">
@@ -130,4 +100,13 @@ for (let i = 0; i < posts.length; i++) {
   container.innerHTML += contenutoHTML;
 }
 
-}
+//definisco i  bottoni e il munero di like
+const elementLikeButton = document.querySelectorAll(".like-button");
+const elementLikeCounter = document.querySelectorAll(".js-likes-counter")
+
+console.log(elementLikeButton);
+console.log(elementLikeCounter);
+
+
+//Array vuoto dove vengono messi i post a cui è stato dato il like
+ArraylikePosts = [];
