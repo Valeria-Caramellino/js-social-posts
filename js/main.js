@@ -60,7 +60,7 @@ const posts = [
     created: "2021-03-05",
   },
 ];
-
+//CREO HTML E METTO OGGETTI AL SUO INTERNO
 let container = document.getElementById("container");
 
 for (let i = 0; i < posts.length; i++) {
@@ -100,28 +100,52 @@ for (let i = 0; i < posts.length; i++) {
   container.innerHTML += contenutoHTML;
 }
 
-//definisco i  bottoni 
-let elementLike = document.querySelectorAll(".like-button");
-//definisco elemento da modificare
-//devo aggiungere uno a questo elemento ogni volta che schiaccio
-let elementCounter =document.querySelectorAll(".js-likes-counter");
+//ARRAY ID
+let ArrayCurrentLike = []
 
-/////////////////////////////////////////////// FUNZIONA A META'////////////////
+//POPOLO ARRAY ID
+posts.forEach((element,index) => {
+    const like = element.likes;
+    ArrayCurrentLike.push(like);
+});
+console.log(ArrayCurrentLike);
 
-for (let i = 0; i < elementLike.length; i++) {
-
-    const element = elementLike[i];
-
-    element.addEventListener("click", function() {
-
-      this.classList.toggle("color");
-
-      for (let i = 0; i < elementCounter.length; i++) {
-        const eleContent = elementCounter[i];
-        eleContent.innerHTML= `<b id="like-counter-1" class="js-likes-counter">${posts[i].likes + 1}</b>`;
-      
-       console.log(eleContent);
-      }
-
+// DEFINISCO BOTTONI
+let buttonLike = document.querySelectorAll(".like-button")
+//    DEFINISCO CICLO FOR PER IL CLICK
+for (let i = 0; i < buttonLike.length; i++) {
+  const elementsButton = buttonLike[i];
+  elementsButton.addEventListener("click", function(){
+  // PRENDO ELEMENTO HTML DELL'ID CON IL THIS
+  
+  if (elementsButton.classList.contains("like-button--liked")){
+    // PARTE LA FUNZIONE DECREMENTO
+    tolgoLike(i);
+                
+    }else {
+    // PARTE LA FUNZIONE INCREMENTO
+    aggiungoLike(i);
+    }
+    elementsButton.classList.toggle("like-button--liked");
+    //DEFINISCO HTML
+    document.querySelectorAll(".js-likes-counter")[i].innerHTML = posts[i].likes;
     })
-}
+  }
+
+
+
+
+/////////////////////////////////////FUNZIONI/////////////////////////
+
+
+// FUNZIONE INCREMENTO LIKE
+    function aggiungoLike(indice) {
+        posts[indice].likes++;
+        console.log(posts[indice].likes);
+    } 
+
+// FUNZIONE DECREMENTO LIKE
+function tolgoLike(indice) {
+    posts[indice].likes--;
+    console.log(posts[indice].likes);
+} 
