@@ -117,8 +117,9 @@ let buttonLike = document.querySelectorAll(".like-button")
 //    DEFINISCO CICLO FOR PER IL CLICK
 for (let i = 0; i < buttonLike.length; i++) {
   const elementsButton = buttonLike[i];
-  elementsButton.addEventListener("click", function(){
+  elementsButton.addEventListener("click", function(e){
   // PRENDO ELEMENTO HTML DELL'ID CON IL THIS
+  e.preventDefault();
   
   if (elementsButton.classList.contains("like-button--liked")){
     // PARTE LA FUNZIONE DECREMENTO
