@@ -102,16 +102,6 @@ for (let i = 0; i < posts.length; i++) {
   container.innerHTML += contenutoHTML;
 }
 
-//ARRAY ID
-let ArrayCurrentLike = []
-
-//POPOLO ARRAY ID
-posts.forEach((element,index) => {
-    const like = element.likes;
-    ArrayCurrentLike.push(like);
-});
-console.log(ArrayCurrentLike);
-
 // DEFINISCO BOTTONI
 let buttonLike = document.querySelectorAll(".like-button")
 //    DEFINISCO CICLO FOR PER IL CLICK
@@ -132,8 +122,8 @@ for (let i = 0; i < buttonLike.length; i++) {
     elementsButton.classList.toggle("like-button--liked");
     //DEFINISCO HTML
     document.querySelectorAll(".js-likes-counter")[i].innerHTML = posts[i].likes;
-    })
-  }
+  })
+}
 
 
 
@@ -142,13 +132,13 @@ for (let i = 0; i < buttonLike.length; i++) {
 
 
 // FUNZIONE INCREMENTO LIKE
-    function aggiungoLike(indice) {
-        posts[indice].likes++;
-        console.log(posts[indice].likes);
-    } 
+function aggiungoLike(indice) {
+  posts[indice].likes++;
+  console.log(posts[indice].likes);
+} 
 
 // FUNZIONE DECREMENTO LIKE
 function tolgoLike(indice) {
-    posts[indice].likes--;
-    console.log(posts[indice].likes);
+  posts[indice].likes--;
+  console.log(posts[indice].likes);
 } 
