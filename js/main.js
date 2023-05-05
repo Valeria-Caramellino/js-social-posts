@@ -62,16 +62,20 @@ const posts = [
 ];
 //CREO HTML E METTO OGGETTI AL SUO INTERNO
 let container = document.getElementById("container");
+let imageTempplete="";
 
+ 
 for (let i = 0; i < posts.length; i++) {
   let contenutoHTML = `<div id="${posts[i].id}" class="post"> `;
   contenutoHTML += `<div class="post__header">`;
   contenutoHTML += ` <div class="post-meta"> `;
   contenutoHTML += `<div class="post-meta__icon">`;
-  if (posts[i].author.image == null) {
-    posts[i].author.image ="https://www.shutterstock.com/image-vector/lf-fl-logo-design-vector-260nw-1715186701.jpg";
+  if (posts[i].author.image != null) {
+    contenutoHTML+=  `<img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">`;
+  }else{
+    contenutoHTML+=`<div class="profile-pic-default"><span>LF</span></div>`;
   }
-  contenutoHTML += `<img class="profile-pic" src="${posts[i].author.image}" alt="${posts[i].author.name}">`;
+
   contenutoHTML += `</div>`;
   contenutoHTML += `<div class="post-meta__data">
     <div class="post-meta__author">${posts[i].author.name}</div>
