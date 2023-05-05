@@ -62,8 +62,6 @@ const posts = [
 ];
 //CREO HTML E METTO OGGETTI AL SUO INTERNO
 let container = document.getElementById("container");
-let imageTempplete="";
-
  
 for (let i = 0; i < posts.length; i++) {
   let contenutoHTML = `<div id="${posts[i].id}" class="post"> `;
